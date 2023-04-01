@@ -34,19 +34,29 @@ document.querySelector(".btn").addEventListener("click", () => {
       dateobj.year = yearDiff;
       let monthDiff = nowMonth - monthvalue;
       if (monthDiff < 0) {
-        dateobj.month = 12 + (monthDiff + 1);
-        dateobj.date = 31 - dayvalue + nowDay;
-        if (dateobj === 31) {
+        dateobj.year--;
+        dateobj.month = 12+monthDiff-1;
+        dateobj.date = (months[nowMonth-1]-dayvalue)+nowDay;
+        if (nowDay=== dayvalue) {
           dateobj.month++;
           dateobj.date = 0;
         }
+        if(dateobj.month===12){
+          dateobj.month=0;
+          dateobj.year++;
+        }
       } else if (monthDiff >= 0) {
-        dateobj.year++;
-        dateobj.month = monthDiff;
-        dateobj.date = 31 - dayvalue + nowDay;
-        if (dateobj === 31) {
+        // dateobj.year++;
+        dateobj.month = monthDiff-1;
+        // dateobj.date = 31 - dayvalue + nowDay;
+        dateobj.date = (months[nowMonth-1]-dayvalue)+nowDay;
+        if (nowDay===dayvalue) {
           dateobj.month++;
           dateobj.date = 0;
+        }
+        if(dateobj.month===12){
+          dateobj.month=0;
+          dateobj.year++;
         }
       }
       document.querySelector(".year-display span").textContent = dateobj.year;
