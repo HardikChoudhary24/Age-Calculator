@@ -13,13 +13,13 @@ document.querySelector(".btn").addEventListener("click", () => {
   let monthvalue = month.value;
   let yearvalue = year.value;
   if (dayvalue != "" && monthvalue != "" && yearvalue != "") {
-    let userDate = moment(`${dayvalue}/${monthvalue}/${yearvalue}`);
-
     let isValidDate = moment(
       `${dayvalue}/${monthvalue}/${yearvalue}`,
       "DD/MM/YYYY",
       true
     ).isValid();
+
+
     const dateobj = {
       year: undefined,
       month: undefined,
@@ -28,7 +28,8 @@ document.querySelector(".btn").addEventListener("click", () => {
     let nowDay = parseInt(moment().format("DD"));
     let nowMonth = parseInt(moment().format("MM"));
     let nowYear = parseInt(moment().format("YYYY"));
-    if (isValidDate) {
+    const months = [31, 28, 31, 30, 31, 30, 31, 30, 31, 30, 31];
+    if (monthvalue <= 12 && monthvalue>0&& dayvalue>0 && dayvalue < months[monthvalue - 1] && yearvalue <= nowYear && isValidDate) {
       let yearDiff = nowYear - yearvalue;
       dateobj.year = yearDiff;
       let monthDiff = nowMonth - monthvalue;
@@ -43,30 +44,27 @@ document.querySelector(".btn").addEventListener("click", () => {
         dateobj.year++;
         dateobj.month = monthDiff;
         dateobj.date = 31 - dayvalue + nowDay;
-        // console.log(31-dayvalue+nowDay);
-        // console.log(dayvalue , nowDay);
         if (dateobj === 31) {
           dateobj.month++;
           dateobj.date = 0;
         }
       }
-
       document.querySelector(".year-display span").textContent = dateobj.year;
       document.querySelector(".months-display span").textContent =
         dateobj.month;
       document.querySelector(".days-display span").textContent = dateobj.date;
     } else {
-      const months = [31, 28, 31, 30, 31, 30, 31, 30, 31, 30, 31];
-      if (monthvalue > 12) {
+      if (monthvalue > 12 || monthvalue<=0) {
         month.style.borderColor = " hsl(0, 100%, 67%)";
         monthLabel.style.color = " hsl(0, 100%, 67%)";
         montherror.textContent = "Must be a valid month";
       }
-      if (monthvalue <= 12 && dayvalue > months[monthvalue - 1]) {
+      if ((monthvalue <= 12 && dayvalue > months[monthvalue - 1])|| (monthvalue <= 12 && dayvalue <=0)) {
         day.style.borderColor = " hsl(0, 100%, 67%)";
         dayLabel.style.color = " hsl(0, 100%, 67%)";
         dayerror.textContent = "Must be a valid day";
-      } else if (monthvalue > 12 && dayvalue > 31) {
+      } 
+      if (monthvalue > 12 && dayvalue > 31) {
         month.style.borderColor = " hsl(0, 100%, 67%)";
         monthLabel.style.color = " hsl(0, 100%, 67%)";
         day.style.borderColor = " hsl(0, 100%, 67%)";
@@ -78,6 +76,22 @@ document.querySelector(".btn").addEventListener("click", () => {
         year.style.borderColor = " hsl(0, 100%, 67%)";
         yearLabel.style.color = " hsl(0, 100%, 67%)";
         yearerror.textContent = "Must be in the past";
+      }
+      else if(yearvalue<=1000){
+        year.style.borderColor = " hsl(0, 100%, 67%)";
+        yearLabel.style.color = " hsl(0, 100%, 67%)";
+        yearerror.textContent = "Enter a valid year";
+      }
+      if(!isValidDate){
+        yearerror.textContent = "Enter a valid year";
+        dayerror.textContent = "Enter a valid day";
+        montherror.textContent = "Enter a valid month";
+        day.style.borderColor = " hsl(0, 100%, 67%)";
+        year.style.borderColor = " hsl(0, 100%, 67%)";
+        month.style.borderColor = " hsl(0, 100%, 67%)";
+        yearLabel.style.color = " hsl(0, 100%, 67%)";
+        dayLabel.style.color = " hsl(0, 100%, 67%)";
+        monthLabel.style.color = " hsl(0, 100%, 67%)";
       }
     }
   }
@@ -99,3 +113,36 @@ document.querySelector(".btn").addEventListener("click", () => {
     }  
   }
 });
+
+// document.querySelector(".d-in").addEventListener("click",()=>{
+//   day.style.borderColor = " hsl(0, 0%, 86%)";
+//   dayLabel.style.color = " hsl(0, 1%, 44%)";
+//   dayerror.textContent = "";
+// })
+day.addEventListener("focusin",()=>{
+  day.style.borderColor = "hsl(259, 100%, 65%)";
+  dayLabel.style.color = " hsl(0, 1%, 44%)";
+  dayerror.textContent = "";
+
+})
+day.addEventListener("focusout",()=>{
+  day.style.borderColor = " hsl(0, 0%, 86%)";
+
+})
+month.addEventListener("focusin",()=>{
+  month.style.borderColor = "hsl(259, 100%, 65%)";
+  monthLabel.style.color = " hsl(0, 1%, 44%)";
+  montherror.textContent = "";
+})
+month.addEventListener("focusout",()=>{
+  month.style.borderColor = " hsl(0, 0%, 86%)";
+})
+year.addEventListener("focusin",()=>{
+  year.style.borderColor = "hsl(259, 100%, 65%)";
+  yearLabel.style.color = " hsl(0, 1%, 44%)";
+  yearerror.textContent = "";
+})
+year.addEventListener("focusout",()=>{
+  year.style.borderColor = " hsl(0, 0%, 86%)";
+})
+
