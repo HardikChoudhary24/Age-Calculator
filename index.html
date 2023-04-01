@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" defer></script>
+
+  <title>Age calculator app</title>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="input-fields">
+        <div class="day inputs">
+          <label for="day-in">DAY</label>
+          <input class="in d-in" type="number" id="day-in" placeholder="DD">
+          <p class="error-day error"></p>
+
+        </div>
+        <div class="month inputs">
+          <label for="month-in">MONTH</label>
+          <input class="in m-in" type="number" id="month-in" placeholder="MM">
+          <p class="error-month error"></p>
+
+        </div>
+        <div class="year inputs">
+          <label for="year-in">YEAR</label>
+          <input class="in y-in" type="number" id="year-in" placeholder="YYYY">
+          <p class="error-year error"></p>
+
+        </div>
+      </div>
+      <div class="btn-cont">
+        <hr>
+        <button class="btn">
+          <img src="assets/images/icon-arrow.svg" alt="">
+        </button>
+      </div>
+      <div class="year-cont">
+        <p class="year-display display"><span>--</span> years</p>
+      </div>
+      <div class="months-cont">
+        <p class="months-display display"><span>--</span> months</p>
+      </div>
+      <div class="days-cont">
+        <p class="days-display display"><span>--</span> days</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

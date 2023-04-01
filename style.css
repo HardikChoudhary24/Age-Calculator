@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+:root{
+    --body:hsl(0, 0%, 94%);
+    --card:hsl(0, 0%, 100%);
+    --primary:hsl(259, 100%, 65%);
+    --error:hsl(0, 100%, 67%);
+    --normal-text:hsl(0, 0%, 8%);
+    --light-grey:hsl(0, 0%, 86%);
+    --dark-grey:hsl(0, 1%, 44%);
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--body);
+    font-family: 'Poppins', sans-serif;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 40px;
+    padding-top: 30px;
+    width: 700px;
+    height: 500px;
+    /* min-width: 400px; */
+    /* min-height: 250px; */
+    background-color: var(--card);
+    border-radius: 25px 25px 140px 25px;
+    margin: 50px;
+}
+.input-fields{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin: 0 20px 0 0;
+}
+.inputs label{
+    margin-bottom: 5px;
+    font-size: 12px;
+    letter-spacing:2px;
+    font-weight:600;
+    color: var(--dark-grey);
+}
+.in{
+    width: 125px;
+    height: 55px;
+    padding: 10px 5px 10px 15px;
+    font-size: 25px;
+    font-weight: 600;
+    border: 1px solid var(--light-grey);
+    border-radius: 8px;
+    cursor: pointer;
+}
+input[type=number]:focus{
+    outline: none;
+    border: 1px solid var(--primary);
+}
+input[type=number] {
+	caret-color:  var(--primary);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn-cont{
+    display: flex;
+    align-items: center;
+    min-width: 100%;
+    margin-top: 10px;
+}
+.btn-cont hr{
+    min-width: 85%;
+    border: 0.8px solid var(--light-grey);
+    height: 0;
+    margin-bottom: 20px;
+    align-self: center;
+    margin: 0 0 0;
+}
+.btn-cont .btn{
+    background-color: var(--primary);
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+.btn-cont .btn:hover{
+    background-color: var(--normal-text);
+}
+
+.btn img{
+    height: 30px;
+}
+
+.display{
+    font-size: 5rem;
+    color: var(--normal-text);
+    font-weight: 800;
+    font-style: italic;
+    line-height: 85px;
+}
+.display span{
+    color: var(--primary);
+}
+
+.error{
+    color: var(--error);
+    font-size: 10px;
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+@media (max-width:550px) {
+    .card{
+        max-width: 500px;
+        padding: 25px;
+    }
+    .input-fields{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .in{
+        width: 90px;
+        padding: 10px 5px 10px 15px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 1px solid var(--light-grey);
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .btn-cont{
+        /* display: flex;
+        align-items: center;
+        min-width: 100%;
+        margin-top: 10px; */
+        margin-bottom: 30px;
+        position: relative;
+    }
+    .btn-cont hr{
+        min-width: 100%;
+        border: 0.8px solid var(--light-grey);
+        height: 0;
+        margin-bottom: 20px;
+        align-self: center;
+        margin: 0 0 0;
+    }
+    .btn-cont .btn{
+        background-color: var(--primary);
+        min-width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        position: relative;
+        right: 60%;
+    }
+    .display{
+        font-size: 3.8rem;
+        line-height: 60px;
+        
+    }
+    .btn img{
+        height: 20px;
+    }
+}
+@media (max-width:415px){
+    .card{
+        max-width: 325px;
+        height: 470px;
+        padding: 25px;
+    }
+    .in{
+        width: 80px;
+        padding: 10px 2px 10px 10px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 1px solid var(--light-grey);
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .display{
+        font-size: 3.15rem;
+        line-height: 60px;
+        
+    }
+}
